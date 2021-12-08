@@ -14,7 +14,7 @@ Future<void> main() async {
     _setCurrentDirectory('{{#snakeCase}}{{applicationName}}{{/snakeCase}}');
 
     print('Running flutter pub get');
-    await Process.run('flutter', ['pub get']);
+    await Process.run('flutter', ['pub', 'get']);
     print('Finished running flutter pub get');
 
     _setCurrentDirectory('android');

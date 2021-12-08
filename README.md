@@ -14,6 +14,12 @@ mason add -g --source git https://github.com/AbbasMathiew/mason_templates --path
 
 ### Running the brick
 
+In order to run the brick you need to run
+
+```
+mason make flutter_template
+```
+
 You will be prompted to enter 3 variables:
 
 - applicationName: The name of the application itself. This will also be converted to snake case and used as the folder name.

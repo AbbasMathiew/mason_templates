@@ -1,0 +1,6 @@
+name: flutter_template
+description: Monstarlab's flutter template.
+vars:
+  - applicationName
+  - applicationId
+  - bundleId

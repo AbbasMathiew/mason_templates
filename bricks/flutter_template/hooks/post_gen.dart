@@ -1,6 +1,13 @@
 import 'dart:io';
 
 Future<void> main() async {
+  final now = DateTime.now();
+  final applicationId = '{{applicationName}}';
+
+  final nowEpoch = now.millisecondsSinceEpoch;
+  final password = '$nowEpoch$applicationId';
+  final passwordHash = password.hashCode;
+
   try {
     print('Setting up project');
 
@@ -13,7 +20,7 @@ Future<void> main() async {
     _setCurrentDirectory('android');
 
     print('Generating android release properties');
-    _generateAndroidReleasePropertiesFile();
+    _generateAndroidReleasePropertiesFile(passwordHash: passwordHash);
     print('Android release properties generated');
 
     print('Generating android debug key...');
@@ -21,7 +28,7 @@ Future<void> main() async {
     print('Android debug key generating');
 
     print('Generating android release key...');
-    await _generateAndroidReleaseKey();
+    await _generateAndroidReleaseKey(passwordHash: passwordHash);
     print('Android release key generating');
 
     print('Finished setting up project');
@@ -30,14 +37,9 @@ Future<void> main() async {
   }
 }
 
-void _generateAndroidReleasePropertiesFile() {
-  final now = DateTime.now();
-  final applicationId = '{{applicationName}}';
-
-  final password = '${now.toString()}$applicationId';
-
-  final passwordHash = password.hashCode;
-
+void _generateAndroidReleasePropertiesFile({
+  required int passwordHash,
+}) {
   File('release_key.properties').writeAsString('''
 storePassword=$passwordHash
 keyPassword=$passwordHash
@@ -46,15 +48,17 @@ storeFile=../release_key.jks
 ''');
 }
 
-Future<void> _generateAndroidReleaseKey() async {
+Future<void> _generateAndroidReleaseKey({
+  required int passwordHash,
+}) async {
   await Process.run('keytool', [
     '-genkey',
     '-dname',
     "cn=Monstarlab, ou=Monstarlab, o=Monstarlab, l=Prague, s=Czech, c=CZ",
     '-keypass',
-    '123456',
+    '$passwordHash',
     '-storepass',
-    '123456',
+    '$passwordHash',
     '-v',
     '-keystore',
     'release_key.jks',

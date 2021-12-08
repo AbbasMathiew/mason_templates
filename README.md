@@ -1,6 +1,6 @@
 # Mason Setup
 
-Setup and install mason (https://pub.dev/packages/mason)
+Setup and install [mason](https://pub.dev/packages/mason)
 
 # Templates
 

@@ -3,4 +3,3 @@ description: Monstarlab's flutter template.
 vars:
   - applicationName
   - applicationId
-  - bundleId

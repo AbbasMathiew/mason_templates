@@ -24,6 +24,4 @@ You will be prompted to enter 3 variables:
 
 - applicationName: The name of the application itself. This will also be converted to snake case and used as the folder name.
 
-- applicationId: The android application id.
-
-- bundleId: The IOS bundle id.
+- applicationId: This will be used as the android's `applicationId` and IOS's `bundleId`.

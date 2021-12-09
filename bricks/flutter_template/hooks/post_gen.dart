@@ -11,7 +11,7 @@ Future<void> main() async {
   try {
     print('Setting up project');
 
-    _setCurrentDirectory('{{#snakeCase}}{{applicationName}}{{/snakeCase}}');
+    _setCurrentDirectory('{{#paramCase}}{{applicationName}}{{/paramCase}}');
 
     print('Running flutter pub get');
     await Process.run('flutter', ['pub', 'get']);

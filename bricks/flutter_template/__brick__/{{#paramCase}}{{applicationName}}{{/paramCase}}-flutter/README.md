@@ -1,4 +1,4 @@
-# App name - Flutter
+# {{applicationName}} - Flutter
 
 ## 📖 Project description
 This project serves as a template project for Flutter applications. You can generate a new repository by clicking "Use this remplate" above.

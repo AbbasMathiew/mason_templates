@@ -1,1 +1,1 @@
-git branch '{{#snakeCase}}{{applicationName}}{{/snakeCase}}'
+git_branch '{{#snakeCase}}{{applicationName}}{{/snakeCase}}'
